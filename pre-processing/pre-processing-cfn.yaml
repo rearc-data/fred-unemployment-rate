@@ -1,5 +1,5 @@
 ---
-AWSTemplateFormatVersion: "2010-09-09"
+AWSTemplateFormatVersion: '2010-09-09'
 Transform: "AWS::Serverless-2016-10-31"
 # CloudFormation template in YAML to setup an automated process to update revisions to datasets in AWS Data Exchange
 Parameters:
@@ -22,18 +22,18 @@ Parameters:
     Description: AWS Region for AWS Data Exchange
 
 Resources:
-  # Create an IAM role for Lambda to use
+# Create an IAM role for Lambda to use
   LambdaRole:
     Type: AWS::IAM::Role
     Properties:
       AssumeRolePolicyDocument:
         Statement:
           - Action:
-              - sts:AssumeRole
+            - sts:AssumeRole
             Effect: Allow
             Principal:
               Service:
-                - lambda.amazonaws.com
+              - lambda.amazonaws.com
         Version: 2012-10-17
       ManagedPolicyArns:
         - arn:aws:iam::aws:policy/AWSLambdaExecute
@@ -42,23 +42,25 @@ Resources:
         - arn:aws:iam::aws:policy/AWSMarketplaceSellerFullAccess
       Path: /
 
-  # Create a Lambda function that will update daily revisions to AWS Data Exchange dataset
+# Create a Lambda function that will update daily revisions to AWS Data Exchange dataset
   LambdaFunction:
     Type: AWS::Lambda::Function
     Properties:
-      FunctionName: !Join
-        - ""
-        - - "source-for-"
-          - !Ref DataSetName
+      FunctionName:
+        !Join
+          - ''
+          - - 'source-for-'
+            - !Ref DataSetName
       Description: "Source revision updates to AWS Data Exchange data set"
       Runtime: "python3.7"
       Code:
         S3Bucket:
           Fn::Sub: ${S3Bucket}
-        S3Key: !Join
-          - ""
-          - - Fn::Sub: ${DataSetName}
-            - "/automation/pre-processing-code.zip"
+        S3Key:
+          !Join
+            - ''
+            - - Fn::Sub: ${DataSetName}
+              - '/automation/pre-processing-code.zip'
       Handler: "lambda_function.lambda_handler"
       MemorySize: 256
       Timeout: 120
@@ -86,7 +88,8 @@ Resources:
       ScheduleExpression: "cron(0 8 2 * ? *)"
       State: "ENABLED"
       Targets:
-        - Arn:
+        -
+          Arn:
             Fn::GetAtt:
               - "LambdaFunction"
               - "Arn"

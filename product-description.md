@@ -1,4 +1,5 @@
-# 
+Unemployment Rate in the US | FRED
+========================= 
 
 The source code outlining how this product gathers, transforms, revises and publishes its datasets is available at [https://github.com/rearc-data/fred-unemployment-rate](https://github.com/rearc-data/fred-unemployment-rate).
 

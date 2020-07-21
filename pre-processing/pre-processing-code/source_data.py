@@ -24,10 +24,9 @@ def data_to_s3(frmt):
     else:
         data_set_name = os.environ['DATA_SET_NAME']
         filename = data_set_name + frmt
-        file_location = 'C:/Users/Ayush Varma/Desktop/' + filename
+        file_location = '/tmp/' + filename
 
         with open(file_location, 'wb') as f:
-            print('hi')
             f.write(response.read())
             f.close()
 

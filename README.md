@@ -8,7 +8,7 @@ You can subscribe to the AWS Data Exchange product utilizing the automation feat
 
 ## Main Overview
 
-This release contains information on the unemployment rate in the United States which includes 1 of the 50 states or the District of Columbia and does not include those in the military or those in institutions. 
+This release contains information on the unemployment rate in the United States which includes 1 of the 50 states or the District of Columbia and does not include those in the military or institutions.
 
 The included data is provided by the Federal Reserve Bank of St. Louis' FRED (Federal Reserve Economic Data) platform, which contains information on over 700,000+ series related to historical economic data. If you are interested in learning more or want to explore other datasets maintained on FRED, visit the [FRED homepage](https://fred.stlouisfed.org/).
 
